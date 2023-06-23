@@ -1,0 +1,59 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+          <div class="container text-center">
+            <img src="../../../assets/loginicon.png" alt="" />
+          </div>
+          <h1 class="text-center">Login to your account</h1>
+
+          <form #loginform="ngForm" (ngSubmit)="formSubmit()">
+            <!--email-->
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Email ID</mat-label>
+              <input
+                required
+                [(ngModel)]="loginData.email"
+                ngModel
+                email="true"
+                type="email"
+                name="email"
+                matInput
+                placeholder="Enter your email id"
+              />
+            </mat-form-field>
+
+            <!--password-->
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input
+                required
+                [(ngModel)]="loginData.password"
+                type="password"
+                name="password"
+                matInput
+                [type]="showPassword ? 'text' : 'password'"
+                placeholder="Enter your password"
+              />
+              <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+                showPassword ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </mat-form-field>
+
+            <div class="container text-center mb20">
+              <button
+                [disabled]="loginform.invalid"
+                mat-raised-button
+                color="primary"
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

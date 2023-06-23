@@ -1,0 +1,50 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" mat-icon-button class="example-icon">
+    <mat-icon>lock_open</mat-icon>
+  </a>
+  <span>Password Vault</span>
+  <span class="example-spacer"></span>
+  <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/login'"
+    mat-icon-button
+    class="example-icon favorite-icon"
+  >
+    <p style="font-size: medium">Login</p>
+  </a>
+  <a
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon favorite-icon"
+  >
+    <p style="font-size: medium">Signup</p>
+  </a>
+
+  <a
+    *ngIf="isLoggedIn"
+    routerLink="/passdata"
+    disabled
+    aria-label="Example icon button with a open in new tab icon"
+  >
+    Fetch Passwords
+  </a>
+
+  <a
+    (click)="logout()"
+    *ngIf="isLoggedIn"
+    mat-icon-button
+    class="example-icon favorite-icon"
+  >
+    <p style="font-size: medium">Logout</p>
+  </a>
+
+  <button
+    *ngIf="isLoggedIn && user"
+    mat-icon-button
+    class="example-icon favorite-icon ml20"
+    style="font-size: medium"
+  >
+    {{ user.firstName }}
+  </button>
+</mat-toolbar>

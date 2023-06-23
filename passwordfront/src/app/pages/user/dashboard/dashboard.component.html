@@ -1,0 +1,83 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt20">
+      <div class="col-md-6 offset-md-3">
+        <h1 class="text-center">Save your passwords here!</h1>
+        <form
+          #passwordform="ngForm"
+          (ngSubmit)="formSubmit(); passwordform.reset()"
+        >
+          <!--Site name-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Name of the site</mat-label>
+            <input
+              [(ngModel)]="password.accountname"
+              required
+              type="text"
+              name="accountname"
+              matInput
+              placeholder="Enter name of the site"
+            />
+            <mat-hint>Please fill all the fields before submitting</mat-hint>
+          </mat-form-field>
+
+          <!--username for this account-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>User name of the account</mat-label>
+            <input
+              [(ngModel)]="password.username"
+              required
+              type="text"
+              name="username"
+              matInput
+              placeholder="Enter User name"
+            />
+          </mat-form-field>
+
+          <!--password-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Password of the account to be saved</mat-label>
+            <input
+              required
+              [(ngModel)]="password.accPassword"
+              type="password"
+              name="accPassword"
+              matInput
+              placeholder="Enter password of the account"
+              [type]="showPassword ? 'text' : 'password'"
+            />
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+              showPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </mat-form-field>
+
+          <!--Your email-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Your Email</mat-label>
+            <input
+              required
+              [(ngModel)]="password.userEmail"
+              type="email"
+              ngModel
+              email="true"
+              name="userEmail"
+              matInput
+              placeholder="Enter your email"
+            />
+          </mat-form-field>
+
+          <div class="container text-center mb20">
+            <button
+              [disabled]="passwordform.invalid"
+              mat-raised-button
+              color="primary"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row" style="margin-top: 20px">
+      <div class="col-md-6 offset-md-3">
+        <div class="container text-center">
+          <img src="../../../assets/registerlogo.png" alt="" />
+        </div>
+        <h1 class="text-center">Register!</h1>
+
+        <form #signupform="ngForm" (ngSubmit)="formSubmit()">
+          <!--first name-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input
+              required
+              #firstName="ngModel"
+              [(ngModel)]="user.firstName"
+              name="firstName"
+              matInput
+              placeholder="Enter your first name"
+            />
+          </mat-form-field>
+
+          <!--last name-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input
+              required
+              #lastName="ngModel"
+              [(ngModel)]="user.lastName"
+              name="lastName"
+              matInput
+              placeholder="Enter your last name"
+            />
+          </mat-form-field>
+
+          <!--email-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Email ID</mat-label>
+            <input
+              required
+              #email="ngModel"
+              [(ngModel)]="user.email"
+              ngModel
+              email="true"
+              name="email"
+              type="email"
+              matInput
+              placeholder="Enter your email id"
+            />
+            <mat-hint>Only one email id per account</mat-hint>
+          </mat-form-field>
+
+          <!--password-->
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input
+              required
+              #password="ngModel"
+              [(ngModel)]="user.password"
+              name="password"
+              matInput
+              [type]="showPassword ? 'text' : 'password'"
+              placeholder="Enter your password"
+            />
+            <mat-icon matSuffix (click)="togglePasswordVisibility()">{{
+              showPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button
+              [disabled]="signupform.invalid"
+              type="submit"
+              mat-raised-button
+              color="primary"
+            >
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

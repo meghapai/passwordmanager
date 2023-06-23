@@ -1,0 +1,59 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row mt20">
+      <table mat-table [dataSource]="passwordDetails" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="Password ID">
+          <th mat-header-cell *matHeaderCellDef>Password ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.passwordId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Account Name">
+          <th mat-header-cell *matHeaderCellDef>Account Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.accountname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="User Name">
+          <th mat-header-cell *matHeaderCellDef>User Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Account Password">
+          <th mat-header-cell *matHeaderCellDef>Account Password</th>
+          <td mat-cell *matCellDef="let element">{{ element.accPassword }}</td>
+        </ng-container>
+
+        <!--edit button-->
+        <ng-container matColumnDef="Update Password">
+          <th mat-header-cell *matHeaderCellDef>Update Password</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="editPassword(element.passwordId)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!--delete button-->
+        <ng-container matColumnDef="Delete Password">
+          <th mat-header-cell *matHeaderCellDef>Delete Password</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deletePassword(element.passwordId)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>
